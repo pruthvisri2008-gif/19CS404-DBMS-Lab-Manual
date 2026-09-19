@@ -37,124 +37,210 @@ HAVING condition;
 ```
 
 **Question 1**
---
--- Paste Question 1 here
+What is the average dosage prescribed for each medication?
 
-```sql
--- Paste your SQL code below for Question 1
+Sample tablePrescriptions Table
+
+
+
+```
+select
+    Medication,
+    AVG(Dosage) AS AvgDosage
+from Prescriptions
+group by Medication;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="745" height="775" alt="image" src="https://github.com/user-attachments/assets/7ee55249-88b0-4130-b8e4-06866b2ceeb7" />
+
 
 **Question 2**
----
--- Paste Question 2 here
+What is the total number of appointments scheduled by each doctor?
 
-```sql
--- Paste your SQL code below for Question 2
+Sample table:Appointments Table
+
+
+
+```
+select DoctorID, count(*) as TotalAppointments
+from Appointments
+group by DoctorID;
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="712" height="642" alt="image" src="https://github.com/user-attachments/assets/0cfcd019-953c-46cd-993c-af7a232c5588" />
+
 
 **Question 3**
----
--- Paste Question 3 here
+How many appointments are scheduled for each doctor?
 
-```sql
--- Paste your SQL code below for Question 3
+Sample table:Appointments Table
+
+```
+select DoctorID, count(*) as TotalAppointments
+from Appointments
+group by DoctorID;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="712" height="651" alt="image" src="https://github.com/user-attachments/assets/88a94ef7-4f9f-4326-b70f-2dd417f38b45" />
+
 
 **Question 4**
----
--- Paste Question 4 here
+Write a SQL query to find the average length of email addresses (in characters):
 
-```sql
--- Paste your SQL code below for Question 4
+Table: customer
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+city        TEXT
+email       TEXT
+phone       INTEGER
+
+```
+select AVG(LENGTH(email)) AS avg_email_length
+from customer;
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="577" height="366" alt="image" src="https://github.com/user-attachments/assets/6ac57cdd-b9c9-44a5-af2d-bc145f4d098b" />
+
 
 **Question 5**
----
--- Paste Question 5 here
+Write a SQL query to determine the number of customers who received at least one grade for their activity.
 
-```sql
--- Paste your SQL code below for Question 5
+Sample table: customer
+
+customer_id |   cust_name    |    city    | grade | salesman_id 
+
+-------------+----------------+------------+-------+-------------
+
+        3002 | Nick Rimando   | New York   |   100 |        5001
+
+        3007 | Brad Davis     | New York   |   200 |        5001
+
+        3005 | Graham Zusi    | California |   200 |        5002
+
+```
+select COUNT(*) AS COUNT
+FROM customer
+WHERE grade IS NOT NULL;
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="525" height="362" alt="image" src="https://github.com/user-attachments/assets/53551c7d-5848-4300-9bc3-e8d11c1d7944" />
+
 
 **Question 6**
----
--- Paste Question 6 here
+Write a SQL query to find the average length of names for people living in Chennai?
 
-```sql
--- Paste your SQL code below for Question 6
+Table: customer
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT   
+city        TEXT
+email       TEXT
+phone       INTEGER
+
+```
+select AVG(LENGTH(name)) AS avg_name_length
+FROM customer
+where city = 'Chennai';
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="502" height="363" alt="image" src="https://github.com/user-attachments/assets/42ba6508-a80c-4678-9e3d-49a663332179" />
+
 
 **Question 7**
----
--- Paste Question 7 here
+Write a SQL query to find the minimum purchase amount.
 
-```sql
--- Paste your SQL code below for Question 7
+Sample table: orders
+
+ord_no      purch_amt   ord_date    customer_id  salesman_id
+
+----------  ----------  ----------  -----------  -----------
+
+70001       150.5       2012-10-05  3005         5002
+
+70009       270.65      2012-09-10  3001         5005
+
+70002       65.26       2012-10-05  3002         5001
+
+```
+select MIN(purch_amt) AS MINIMUM
+FROM orders;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="446" height="415" alt="image" src="https://github.com/user-attachments/assets/b53a944f-0a30-435d-807a-d9ddaa3c5789" />
+
 
 **Question 8**
----
--- Paste Question 8 here
+Write an SQL query that groups the customer data into 5-year age intervals, calculates the minimum salary for each group, and excludes groups where the minimum salary is not less than 2000.
 
-```sql
--- Paste your SQL code below for Question 8
+Table: customer1
+
+```
+select 
+    (age/5)*5 AS age_group,
+    MIN(salary) 
+from customer1
+group by (age/5)*5
+HAVING MIN(salary) < 2000;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="682" height="390" alt="image" src="https://github.com/user-attachments/assets/646c261b-1a40-4473-b4be-03055ce2c6b4" />
+
 
 **Question 9**
----
--- Paste Question 9 here
+Write the SQL query that achieves the grouping of data by age intervals using the expression (age/5)5, calculates the total salary sum for each group, and excludes groups where the total salary sum is not greater than 5000.
 
-```sql
--- Paste your SQL code below for Question 9
+Sample table: customer1
+
+
+```
+SELECT (age/5)*5 as age_group,SUM(salary)
+from customer1
+group by age_group   
+having SUM(salary) > 5000;
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="637" height="396" alt="image" src="https://github.com/user-attachments/assets/15be2f11-e200-4646-801d-3d75bdb530a3" />
+
 
 **Question 10**
----
--- Paste Question 10 here
+Write the SQL query that accomplishes the grouping of data by addresses, calculates the sum of salaries for each address, and excludes addresses where the total salary sum is not greater than 2000.
 
-```sql
--- Paste your SQL code below for Question 10
+Sample table: customer1
+
+```
+SELECT address,SUM(salary)
+from customer1
+group by address   
+having SUM(salary) > 2000;
 ```
 
 **Output:**
 
-![Output10](output.png)
+![Uploading image.png…]()
+
 
 
 ## RESULT
