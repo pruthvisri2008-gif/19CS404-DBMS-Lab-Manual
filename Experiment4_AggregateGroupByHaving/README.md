@@ -239,7 +239,8 @@ having SUM(salary) > 2000;
 
 **Output:**
 
-![Uploading image.png…]()
+<img width="685" height="510" alt="image" src="https://github.com/user-attachments/assets/b19d09ab-9bfd-49f4-a7a9-06fd688b44b1" />
+
 
 
 
